@@ -1,1 +1,1 @@
-web: gunicorn mabmqttproxy.wsgi --log-file -
+web: gunicorn mqttproxyproject\mqttproxyproject.wsgi
