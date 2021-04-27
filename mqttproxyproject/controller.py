@@ -23,4 +23,4 @@ def chat(request):
     return HttpResponse('<h1> haliho </h1>')
 
 def home(request):
-    return HttpResponse('<h1> haliho </h1>')
+    return HttpResponse('<h1> Haliho ez a Levi & Eszter MAB Mqtt Proxyja. :) </h1>')
