@@ -31,5 +31,4 @@ jobs:
           HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
         run: |
           git remote add heroku https://heroku:6c7fc6f2-5dbb-48cd-9c3b-03b08bb717a1@git.heroku.com/obscure-shelf-10999.git
-          heroku config:set DISABLE_COLLECTSTATIC=1
           git push heroku HEAD:master -f
