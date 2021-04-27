@@ -18,10 +18,10 @@ def vote(request):
     mqtt.publishMessage(message,"vote")
     return HttpResponse('<h1> haliho </h1>')
 
-
-
 def chat(request):
     message = request.GET.get('message', '')
     mqtt.publishMessage(message,"chat")
     return HttpResponse('<h1> haliho </h1>')
 
+def home(request):
+    return HttpResponse('<h1> haliho </h1>')

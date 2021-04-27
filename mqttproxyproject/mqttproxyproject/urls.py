@@ -19,6 +19,7 @@ from . import controller
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', controller.home),
     path('add/', controller.add, name='add'),
     path('vote/', controller.vote, name='vote'),
     path('chat/', controller.chat, name='chat'),
