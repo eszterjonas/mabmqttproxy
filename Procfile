@@ -1,1 +1,1 @@
-web: gunicorn mqttproxyproject\mqttproxyproject.wsgi
+web: gunicorn mqttproxyproject.wsgi
