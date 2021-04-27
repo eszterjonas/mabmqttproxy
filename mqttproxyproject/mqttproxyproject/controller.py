@@ -6,7 +6,6 @@ from . import mqtt
 import json
 
 
-
 def add(request):
     message = request.GET.get('message', '')
     mqtt.publishMessage(message,"add")
