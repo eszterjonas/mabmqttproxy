@@ -2,7 +2,7 @@ import paho.mqtt.client as mqtt
 
 address = 'mab.inf.elte.hu'  # mab.inf.elte.hu
 port = int(443)  # 443
-username = 'tm_user1'
+username = 'tm_device'
 password = '123'
 user = 'User1'
 
