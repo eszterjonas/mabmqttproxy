@@ -7,9 +7,9 @@ import json
 
 
 def add(request):
-    mqtt.client.loop_start()
     message = request.GET.get('message', '')
     mqtt.publishMessage(message,"add")
+    print("success")
     return HttpResponse('<h1> haliho </h1>')
 
 def vote(request):
