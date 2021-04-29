@@ -7,7 +7,7 @@ import json
 
 
 def add(request):
-    print(request)
+    print("teszt")
     message = request.GET.get('message', '')
     mqtt.publishMessage(message,"add")
     return HttpResponse('<h1> haliho </h1>')
