@@ -9,12 +9,11 @@ user = 'User1'
 flag_connected = 0
 
 def on_connect(c, userdata, flags, rc):
-    global flag_connected
-    flag_connected = 1
     if rc == 0:
         print('Connected.')
         client.subscribe(f'devices/{username}/inbox/#')
     else:
+        print('Not connected.')
         exit(rc)
 
 def publishMessage(message, topic):
