@@ -6,8 +6,6 @@ username = 'tm_device'
 password = '123'
 user = 'User1'
 
-flag_connected = 0
-
 def on_connect(c, userdata, flags, rc):
     if rc == 0:
         print('Connected.')
@@ -36,9 +34,9 @@ def on_message(c, userdata, msg):
 
 
 client = mqtt.Client(client_id=username, transport='websockets')
+client.on_connect = on_connect
+client.on_message = on_message
 client.tls_set()
 client.ws_set_options('/mqttservice')
 client.username_pw_set(username, password)
-client.on_connect = on_connect
-client.on_message = on_message
 client.connect(address, port)
