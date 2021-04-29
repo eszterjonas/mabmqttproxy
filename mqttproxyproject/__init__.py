@@ -1,5 +1,4 @@
 from . import mqtt
 
-mqtt.client.loop_start()
-print("Start")
+mqtt.client.loop_forever()
 #mqtt.client.disconnect()
