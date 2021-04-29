@@ -7,7 +7,6 @@ password = '123'
 user = 'User1'
 
 def on_connect(c, userdata, flags, rc):
-    
     if rc == 0:
         print('Connected.')
         client.subscribe(f'devices/{username}/inbox/#')
@@ -34,10 +33,12 @@ def on_message(c, userdata, msg):
         client.publish(f'users/{user}/inbox/{username}/functionResult/ok')
 
 
-client = mqtt.Client(client_id=username, transport='websockets')
-client.on_connect = on_connect
-client.on_message = on_message
-client.tls_set()
-client.ws_set_options('/mqttservice')
-client.username_pw_set(username, password)
-client.connect(address, port)
+def startMqtt():
+    client = mqtt.Client(client_id=username, transport='websockets')
+    client.on_connect = on_connect
+    client.on_message = on_message
+    client.tls_set()
+    client.ws_set_options('/mqttservice')
+    client.username_pw_set(username, password)
+    client.connect(address, port, keepalive=20)
+    client.loop_start()
