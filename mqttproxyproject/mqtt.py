@@ -6,10 +6,11 @@ username = '1:2:3'
 password = '123'
 user = 'User1'
 
-funct = 1
+flag_connected = 0
 
 def on_connect(c, userdata, flags, rc):
-    global client
+    global flag_connected
+    flag_connected = 1
     if rc == 0:
         print('Connected.')
         client.subscribe(f'devices/{username}/inbox/#')
@@ -44,4 +45,8 @@ client.on_message = on_message
 client.connect(address, port)
 
 
+if flag_connected == 1:
+    print("Succesfully connected")
+else: 
+    print("Something happened")
 
