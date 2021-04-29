@@ -18,6 +18,8 @@ def on_connect(c, userdata, flags, rc):
 
 def publishMessage(message, topic):
     global client , username, user
+    print(message)
+    print(topic)
     client.publish(f'users/everyone/inbox/server/{topic}', message)
     
 def on_message(c, userdata, msg):
