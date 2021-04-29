@@ -7,6 +7,7 @@ password = '123'
 user = 'User1'
 
 def on_connect(c, userdata, flags, rc):
+    
     if rc == 0:
         print('Connected.')
         client.subscribe(f'devices/{username}/inbox/#')
