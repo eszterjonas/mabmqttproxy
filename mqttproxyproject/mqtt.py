@@ -6,9 +6,13 @@ username = 'tm_device'
 password = '123'
 user = 'User1'
 
+client = mqtt.Client(client_id=username, transport='websockets')
+is_going_flag = 0
+
 def on_connect(c, userdata, flags, rc):
-    global client
+    global client, is_going_flag
     if rc == 0:
+        is_going_flag = 1
         print('Connected.')
         client.subscribe(f'devices/{username}/inbox/#')
     else:
@@ -35,12 +39,14 @@ def on_message(c, userdata, msg):
 
 
 def startMqtt():
-    global client
-    client = mqtt.Client(client_id=username, transport='websockets')
-    client.on_connect = on_connect
-    client.on_message = on_message
-    client.tls_set()
-    client.ws_set_options('/mqttservice')
-    client.username_pw_set(username, password)
-    client.connect(address, port, keepalive=20)
-    client.loop_start()
+    global client,is_going_flag  
+    if is_going_flag == 0:
+        client.on_connect = on_connect
+        client.on_message = on_message
+        client.tls_set()
+        client.ws_set_options('/mqttservice')
+        client.username_pw_set(username, password)
+        client.connect(address, port, keepalive=20)
+        client.loop_start()
+    else:
+        print('Already running')
